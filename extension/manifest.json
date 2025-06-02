@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Malicious Domain Checker",
+    "icons": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    },
+    "version": "1.0",
+    "description": "Check if current domain is malicious or not using SNN model",
+    "permissions": ["tabs", "activeTab"],
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "Domain Checker"
+    },
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+    }
+  }
+  
