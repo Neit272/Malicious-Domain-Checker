@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import os
 
 
-def prune_model_madonna_manual(
+def prune_model_manual(
     model_path, X_train, y_train, X_val, y_val, sparsity=0.5
 ):
     """
@@ -58,7 +58,7 @@ def prune_model_madonna_manual(
         verbose=1,
     )
 
-    pruned_model_path = "madonna_model_pruned.keras"
+    pruned_model_path = "model_pruned.keras"
     pruned_model.save(pruned_model_path)
 
     return pruned_model_path, pruned_model, history
@@ -84,7 +84,7 @@ def analyze_sparsity(model):
     return sparsity
 
 
-def quantize_model_madonna(model_path, X_test, y_test):
+def quantize_model(model_path, X_test, y_test):
     """
     Quantize model theo phương pháp MADONNA
     - Sử dụng Post-training quantization
@@ -197,7 +197,7 @@ def compare_models(
     final_compression_ratio = original_size / quantized_size
 
     print("\n" + "=" * 60)
-    print("MADONNA MODEL OPTIMIZATION RESULTS")
+    print("MODEL OPTIMIZATION RESULTS")
     print("=" * 60)
     print(f"Original Model:")
     print(f"  - Size: {original_size:.2f} MB")
@@ -301,7 +301,7 @@ def compare_models(
 
     plt.tight_layout()
     plt.savefig(
-        "data/madonna_prune_quantization_results.png", dpi=300, bbox_inches="tight"
+        "data/prune_quantization_results.png", dpi=300, bbox_inches="tight"
     )
     plt.show()
 
@@ -324,20 +324,20 @@ def main():
         X_train, y_train, test_size=0.1, random_state=42, stratify=y_train
     )
 
-    print("MADONNA Model Optimization Process: Manual Prune → Quantize")
+    print("Model Optimization Process: Manual Prune → Quantize")
     print("=" * 55)
 
-    original_model_path = "madonna_model_13feat.keras"
+    original_model_path = "model_13feat.keras"
 
     # Step 1: Prune model (manual implementation)
     print("\nStep 1: Pruning model (manual magnitude-based)...")
-    pruned_model_path, pruned_model, prune_history = prune_model_madonna_manual(
+    pruned_model_path, pruned_model, prune_history = prune_model_manual(
         original_model_path, X_train_final, y_train_final, X_val, y_val, sparsity=0.5
     )
 
     # Step 2: Quantize pruned model
     print("\nStep 2: Quantizing pruned model...")
-    quantized_model_path = quantize_model_madonna(pruned_model_path, X_test, y_test)
+    quantized_model_path = quantize_model(pruned_model_path, X_test, y_test)
 
     # Step 3: Compare all models
     print("\nStep 3: Comparing models...")
@@ -345,7 +345,7 @@ def main():
         original_model_path, pruned_model_path, quantized_model_path, X_test, y_test
     )
 
-    print("\nMADONNA optimization completed successfully!")
+    print("\nOptimization completed successfully!")
     print(f"Pruned model saved as: {pruned_model_path}")
     print(f"Final optimized model saved as: {quantized_model_path}")
 

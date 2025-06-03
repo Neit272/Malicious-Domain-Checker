@@ -106,4 +106,4 @@ unique, counts = np.unique(y_test, return_counts=True)
 print(f"Dataset distribution in test set: {dict(zip(unique.astype(int), counts))}")
 
 # Save model
-model.save("madonna_model_13feat.keras")
+model.save("model_13feat.keras")
