@@ -327,7 +327,7 @@ def main():
     print("MADONNA Model Optimization Process: Manual Prune → Quantize")
     print("=" * 55)
 
-    original_model_path = "madonna_model_10feat.keras"
+    original_model_path = "madonna_model_13feat.keras"
 
     # Step 1: Prune model (manual implementation)
     print("\nStep 1: Pruning model (manual magnitude-based)...")
