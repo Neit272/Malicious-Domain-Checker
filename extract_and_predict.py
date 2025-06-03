@@ -142,7 +142,7 @@ def extract_features(domain: str):
 def predict_domain(domain):
     features = extract_features(domain)
     interpreter = tf.lite.Interpreter(
-        model_path="madonna_model_pruned_quantized.tflite"
+        model_path="model_pruned_quantized.tflite"
     )
     interpreter.allocate_tensors()
 
@@ -165,6 +165,6 @@ def predict_domain(domain):
 
 
 if __name__ == "__main__":
-    test_domain = "google.com"
+    test_domain = "https://www.youtube.com/watch?v=KpcyNMXQDuo&t=92s"
     result = predict_domain(test_domain)
     print(result)
