@@ -165,6 +165,6 @@ def predict_domain(domain):
 
 
 if __name__ == "__main__":
-    test_domain = "https://www.youtube.com/watch?v=KpcyNMXQDuo&t=92s"
+    test_domain = "qmh.sex"
     result = predict_domain(test_domain)
     print(result)
