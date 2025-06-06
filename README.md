@@ -114,7 +114,7 @@ This project is for educational/demonstration purposes only, due to the fact tha
 ## Credits
 
 - Paper: [MADONNA: Browser-Based MAlicious Domain Detection Through Optimized Neural Network with Feature Analysis](https://doi.org/10.1007/978-3-031-56326-3_20)
-- Re-implemented and extended by @Neit272
+- Re-implemented and extended by @Neit272, @tungnnx (support)
 
 ---
 
